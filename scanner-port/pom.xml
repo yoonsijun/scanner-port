@@ -32,20 +32,80 @@
   </dependencies>
  
   <build>
+
     <plugins>
 	 <plugin>
 	<artifactId>maven-jar-plugin</artifactId>
+	<version>2.2</version>
 	<configuration>
 	  <archive>
 	    <manifest>
 	      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 	      <addClasspath>true</addClasspath>
-	      <classpathPrefix>dependency/</classpathPrefix>
+	      <classpathPrefix>lib/</classpathPrefix>
 	      <mainClass>core.RunServer</mainClass>
 	    </manifest>
 	  </archive>
 	</configuration>
 	</plugin>   
+<plugin>
+	<artifactId>maven-dependency-plugin</artifactId>
+	<version>2.0</version>
+	<executions>
+		<execution>
+			<id>copy-dependencies</id>
+			<phase>package</phase>
+			<goals>
+				<goal>copy-dependencies</goal>
+			</goals>
+			<configuration>
+				<outputDirectory>${basedir}/target/lib</outputDirectory>
+				<overWriteReleases>false</overWriteReleases>
+				<overWriteSnapshots>false</overWriteSnapshots>
+				<overWriteIfNewer>true</overWriteIfNewer>
+			</configuration>
+		</execution>
+	</executions>
+</plugin>	
+<plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here validate the phase you need -->
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/webapp</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/src/main/webapp</directory>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+          <execution>
+            <id>copy-bat</id>
+            <!-- here validate the phase you need -->
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/src/main/resource</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>          
+        </executions>
+      </plugin>	
       <plugin>
         <!-- This plugin is needed for the servlet example -->
         <groupId>org.mortbay.jetty</groupId>
