@@ -13,7 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        
-        <a href="escanearPuerto">Escanear puertos</a>
+        <a href="escanearPuerto?accion=inicio">Escanear puertos</a>
     </body>
 </html>
