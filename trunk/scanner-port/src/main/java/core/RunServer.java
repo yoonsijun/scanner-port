@@ -6,6 +6,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 import servlets.DemoServlet;
+import servlets.EscanearPuertoServlet;
 import servlets.HelloServlet;
 
 class RunServer {
@@ -28,6 +29,7 @@ class RunServer {
         
         context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
         context.addServlet(new ServletHolder(new DemoServlet()),"/demoServlet");
+        context.addServlet(new ServletHolder(new EscanearPuertoServlet()),"/escanearPuerto");
         
         final Server server = new Server(8080);
         server.setHandler(context);

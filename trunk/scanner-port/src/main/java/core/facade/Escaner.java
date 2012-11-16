@@ -24,7 +24,7 @@ public class Escaner {
     public List<PortInfo> escanerPuertos(String host, String modo, int puerto, int puertoInicial, int puertoFinal)
     {
         List<PortInfo> list = new ArrayList<PortInfo>();
-        
+        /*
         try
         {                
             final ExecutorService es = Executors.newFixedThreadPool(20);
@@ -55,6 +55,20 @@ public class Escaner {
         {
         
         }   
+        */
+        
+        for(int i =0;i<5;i++){
+                  PortInfo entity = new PortInfo();
+                  entity.setPuerto(1045);
+                  entity.setProtocolo("protocolo");
+                  entity.setServicio("servicio");
+                  entity.setAplicacion("aplicacion");
+                  entity.setVersion("version");
+                  entity.setRespuesta("respuesta");
+                  
+                  list.add(entity);                                      
+        }
+            
         return list;
     }  
     

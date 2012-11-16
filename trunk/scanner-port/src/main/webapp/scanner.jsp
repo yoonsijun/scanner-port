@@ -5,9 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="java" import="java.util.*"
-import="uni.scd.core.*"
-        %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,13 +22,9 @@ import="uni.scd.core.*"
     <body>
         <h1>Escanear puertos</h1>
         
-        Modo de escaneo:
+        Modo de escaneo: 
         
-         <%
-              Integer indEditar = (request.getAttribute("indMostrar")!=null)?Integer.parseInt(request.getAttribute("indMostrar").toString()):0;
-                        
-          %>
-        <form name="frmBloque" id="frmEscaneo" method="post" action="escanearPuerto" onsubmit="return validarFormulario();" >  
+        <form name="frmBloque" id="frmEscaneo" method="post" action="escanearPuerto?accion=escanear" onsubmit="return validarFormulario();" >  
             <table>
                 <tr>
                     <td>IP/Dominio:</td>
@@ -40,9 +33,9 @@ import="uni.scd.core.*"
                 </tr>
                 <tr>
                     <td><input type="radio" name="rbModo" value="1"></td>
-                    <td>Puerto especÃ­fico:</td>                
+                    <td>Puerto específico:</td>                
                     <td>
-                        <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="<%= (indEditar == 1)? request.getAttribute("indMostrar"):""%>">
+                        <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="">
                     </td>
                 </tr>            
                 <tr>
@@ -65,33 +58,20 @@ import="uni.scd.core.*"
                 </tr>
             </table>
         </form>
-        <div style="display <%= (indEditar == 1)? "block":"none"%>">
+        <div style="display:${param.accion eq 'inicio'?'none':'block'}">
             <table cellspacing="0" cellpadding="0" border="0" class="tabla">
                 <tr>
                      <th><b>Puerto</b></th>
                      <th><b>Protocolo</b></th>
                      <th><b>Servicio</b></th>
-                     <th><b>AplicaciÃ³n</b></th>
-                     <th><b>VersiÃ³n</b></th>                                      
+                     <th><b>Aplicación</b></th>
+                     <th><b>Versión</b></th>                                      
                      <th><b>Respuesta</b></th>  
                 </tr>
-                     <% List<PortInfo> list = (List<PortInfo>)request.getAttribute("beans"); %> 
-                     <% for(int i = 0; i < list.size(); i++ )
-                        {
-                            PortInfo entity = (PortInfo)list.get(i);
-                     %>   
-                            <tr class="<%= (i%2==0)?"normal":"alter" %>">
-                                <td><%= entity.getPuerto() %></td>
-                                <td><%= entity.getProtocolo() %></td>
-                                <td><%= entity.getServicio() %></td>
-                                <td><%= entity.getAplicacion() %></td>
-                                <td><%= entity.getVersion() %></td>
-                                <td><%= entity.getRespuesta() %></td>
-                            </tr>
-                     <% }%>       
 
             </table>
         </div>           
+${beans}
                     
     </body>
 </html>
