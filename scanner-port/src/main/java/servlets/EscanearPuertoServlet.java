@@ -45,6 +45,7 @@ public class EscanearPuertoServlet extends HttpServlet {
 
                 Escaner  escaner = new Escaner();
                 List<PortInfo> list = escaner.escanerPuertos(host,modo, 0,0,0);
+                escaner.test();
                 request.setAttribute("beans",list);
             }
 
@@ -54,6 +55,7 @@ public class EscanearPuertoServlet extends HttpServlet {
         }
         catch(Exception ex)
         {
+            ex.printStackTrace();
             System.err.println("error");
         }
 

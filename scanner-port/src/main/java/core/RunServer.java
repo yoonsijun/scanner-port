@@ -10,9 +10,9 @@ import servlets.EscanearPuertoServlet;
 import servlets.HelloServlet;
 
 class RunServer {
+    
     public static void main(String args[]) {
-
-        System.out.println("Initializing server...");
+        System.out.println("Initializing server jetty...");
         final ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         context.setResourceBase("webapp");
