@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td><input type="radio" name="rbModo" value="1"></td>
-                    <td>Puerto específico:</td>                
+                    <td>Puerto especï¿½fico:</td>                
                     <td>
                         <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="">
                     </td>
@@ -64,14 +64,13 @@
                      <th><b>Puerto</b></th>
                      <th><b>Protocolo</b></th>
                      <th><b>Servicio</b></th>
-                     <th><b>Aplicación</b></th>
-                     <th><b>Versión</b></th>                                      
+                     <th><b>Aplicaciï¿½n</b></th>
+                     <th><b>Versiï¿½n</b></th>                                      
                      <th><b>Respuesta</b></th>  
                 </tr>
 
             </table>
         </div>           
 ${beans}
-                    
     </body>
 </html>
