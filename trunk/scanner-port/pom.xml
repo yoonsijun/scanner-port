@@ -110,7 +110,23 @@
                 </resource>
               </resources>              
             </configuration>            
-          </execution>          
+          </execution>
+          <execution>
+            <id>copy-resources2</id>
+            <!-- here validate the phase you need -->
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/webapp</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/src/main/webapp</directory>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>                    
         </executions>
       </plugin>	
       <plugin>
