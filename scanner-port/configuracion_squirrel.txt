@@ -1,0 +1,12 @@
+copiar la libreria %DIRECTORIO%\scanner-port\target\lib\hsqldb-2.2.9.jar
+al siguente directorio  %DIRECTORIO%\squirrel-sql-3.4.0\lib
+
+Iniciar squirrel, ejecutar:
+%DIRECTORIO%\squirrel-sql-3.4.0\squirrel-sql.bat
+
+Crear una coneccion (ALIAS)
+
+Driver: HSLQDB Standalone
+url de conexion: jdbc:hsqldb:file:D:/jose/uni/cursos/scd/trabajo/scanner-port/db/scannerport-db
+usuario: SA
+password:
