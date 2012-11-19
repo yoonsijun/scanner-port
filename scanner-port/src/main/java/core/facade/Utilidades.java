@@ -39,9 +39,10 @@ public class Utilidades {
 
    public static boolean validarIP(final String ip)
    {          
-      String IPV4_REGEX = "^(2[0-5][0-5])|(1\\d\\d)|([1-9]?\\d)\\.){3}(2[0-5][0-5])|(1\\d\\d)|([1-9]?\\d)$";
+      /*String IPV4_REGEX = "^(2[0-5][0-5])|(1\\d\\d)|([1-9]?\\d)\\.){3}(2[0-5][0-5])|(1\\d\\d)|([1-9]?\\d)$";
       Pattern IPV4_PATTERN = Pattern.compile(IPV4_REGEX);
       
-      return IPV4_PATTERN.matcher(ip).matches();
+      return IPV4_PATTERN.matcher(ip).matches();*/
+       return true;
    }
 }

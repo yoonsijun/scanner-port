@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="java" import="java.util.*"
-import="domain.core.*"%>
+import="core.domain.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -96,7 +96,7 @@ import="domain.core.*"%>
                                 <td><%= entity.getServicio() %></td>
                                 <td><%= entity.getAplicacion() %></td>
                                 <td><%= entity.getVersion() %></td>
-                                <td><%= entity.getRespuesta() %></td>
+                                <td></td>
                             </tr>
                      <% }%>       
 
