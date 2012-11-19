@@ -4,9 +4,10 @@
  */
 package servlets;
 
-import core.domain.PortInfo;
-import core.facade.Escaner;
+import core.domain.*;
+import core.facade.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,15 @@ public class EscanearPuertoServlet extends HttpServlet {
     String ESCANEAR = "escanear";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            doPost(request,response);
+            
+        System.out.println("ddd");
+            List<PortInfo> list = new ArrayList<PortInfo>();
+            request.setAttribute("beans",list);
+            
+             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+             if (dispatcher != null){
+		 dispatcher.forward(request, response);
+             } 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -32,25 +41,45 @@ public class EscanearPuertoServlet extends HttpServlet {
 
         try
         {
-            String accion = request.getParameter("accion");
-            System.out.println("accion:"+accion);            
-            if(accion.equals(INIT)){
-                
-            } else if(accion.equals(ESCANEAR)){
-                String host = request.getParameter("txtHost");
-                String modo = request.getParameter("rbModo");
-//                Integer puerto = Integer.parseInt(request.getParameter("txtPuertoEspecifico"));
-//                Integer puertoDesde = Integer.parseInt(request.getParameter("txtPuertoDesde"));
-//                Integer puertoHasta = Integer.parseInt(request.getParameter("txtPuertoHasta"));
-
-                Escaner  escaner = new Escaner();
-                List<PortInfo> list = escaner.escanerPuertos(host,modo, 0,0,0);
-                escaner.test();
-                request.setAttribute("beans",list);
+            String host = request.getParameter("txtHost");            
+            Integer modo = Integer.parseInt(request.getParameter("rbModo"));
+	    
+            Integer puerto = 0;
+            Integer puertoDesde = 0;
+            Integer puertoHasta = 0;
+            
+            if(modo == 1)
+            {
+                puerto = Integer.parseInt(request.getParameter("txtPuertoEspecifico"));
+            }	    
+            if(modo == 2)
+            {
+                puertoDesde = Integer.parseInt(request.getParameter("txtPuertoDesde"));
+                puertoHasta = Integer.parseInt(request.getParameter("txtPuertoHasta"));
             }
-
+            
+            Boolean indServicio = true;
+            
+            String ip = Utilidades.obtenerIpServer(host);
+            
+            Escaner  escaner = new Escaner();
+            
+            
+            List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta);
+            
+            Servicio servicio = new Servicio();
+                        
+            list = servicio.obtenerServicios(ip, list);
+                        
+            
+            request.setAttribute("beans",list);
+            request.setAttribute("indMostrar", "1"); 
+          
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-	    dispatcher.forward(request, response);
+	    if (dispatcher != null){
+		dispatcher.forward(request, response);
+            } 
             
         }
         catch(Exception ex)

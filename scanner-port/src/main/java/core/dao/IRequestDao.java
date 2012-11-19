@@ -4,6 +4,7 @@
  */
 package core.dao;
 
+import core.domain.Comando;
 import java.util.List;
 
 /**
@@ -12,4 +13,5 @@ import java.util.List;
  */
 public interface IRequestDao {
     public List<String> getComandosPorProtocolo(String protocolo);
+    public List<Comando> getAllCommandos();
 }

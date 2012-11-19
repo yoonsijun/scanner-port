@@ -5,112 +5,134 @@
 package core.facade;
 
 
+import core.dao.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import core.domain.PortInfo;
+import core.domain.*;
 
 /**
  *
  * @author rcastro
  */
-public class Servicio {
+public class Servicio {        
     
-    private byte[] data = null;
+    IRequestDao dao = null;
+    
+    public Servicio()
+    {
+        dao = new RequestDao();
+    }
     
     public List<PortInfo> obtenerServicios(String ip, List<PortInfo> list) throws IOException
-    {       
-       
-        this.createSocket();
-        return new ArrayList<PortInfo>();
+    {           
+        List<Comando> comandos = this.dao.getAllCommandos();
+        
+        for(PortInfo bean : list)
+        {
+            bean.setListaComando(this.runComando(ip, bean.getPuerto(), comandos));
+        }
+                
+        return list;
     }
     
     
-    private void sendMessage(DataOutputStream out) throws Exception
+    public List<Comando> runComando(String server, int port, List<Comando> comandos) 
     {
-        try 
-        {
+        List<Comando> listaComando = new ArrayList<Comando>();
+        
+        Socket socket = null;
+	int ERROR = 1;
+				
+	// connect to server
+	try {
+            socket = new Socket(server, port);
+            System.out.println("IP y pto LOCAL " +socket.getLocalAddress() +":" + socket.getLocalPort());
+	    System.out.println("Connected with server " +socket.getInetAddress() +":" + socket.getPort());
+	}
+	catch (UnknownHostException e) {
+	    System.out.println(e);
+	    System.exit(ERROR);
+	}
+	catch (IOException e) {
+	    System.out.println(e);
+	    System.exit(ERROR);
+	}
 
-            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-            String userOutput;
-            while ((userOutput = stdIn.readLine()) != null)
-            {
-                out.writeBytes(userOutput);
-                out.write('\n');
+	BufferedReader 	is = null; 
+	BufferedOutputStream os = null;
+        //String comando =null;
+	try {
+            os = new BufferedOutputStream(socket.getOutputStream());
+            is = new BufferedReader(new InputStreamReader(socket.getInputStream()));			
+	   
+            String cmd = "";
+            String resultado = "";
+            int count = 1;
+            //verificar por tipo de servicio
+            for(Comando comando:comandos){
+                
+                Comando bean = new Comando();                             
+                cmd = comando.getCommand().replaceAll("%SERVER%", server);                                
+                bean.setCommand(cmd);                
+                
+                resultado = commandTCP(cmd,is,os);                
+                bean.setRespuesta(resultado);
+                bean.setId(count);                
+                listaComando.add(bean);
+                count++;
             }
-            out.flush();
+                
+	}catch (Exception e) {
+            System.out.println(e);
+	}
 
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getStackTrace());
-
-        }
-        finally
-        {
-            out.close();
-        }
+	try {
+	    socket.close();
+	}catch (IOException e) {
+	    System.out.println(e);
+	}
+	System.out.println("===============================================================");
+	System.out.println("Closed ");
+        
+        return listaComando;
     }
+    
+    
+    public String commandTCP(String comando, BufferedReader is, BufferedOutputStream os) 
+    {     
+      
+       StringBuffer str = new StringBuffer("");
+       
+       Map<String,String> headers = null;
+       try {
 
+           System.out.println("===========================================================");
 
-    private void readResponse(DataInputStream in) throws Exception
-    {
-        try
-        {
-            
-            in.readFully(data);
-            System.out.println("hola" + data);
-
-
-        }
-        catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-
-        }
-        finally
-        {
-            in.close();
-        }
-    }
-
-    private void createSocket()
-    {
-
-        try
-        {
-            int port = 8081;
-            InetAddress address = InetAddress.getByName("192.1.2.105");
-            final Socket client = new Socket(address, port);
-            final DataOutputStream out = new DataOutputStream(client.getOutputStream());
-            final DataInputStream in = new DataInputStream(client.getInputStream());
-
-            System.out.println("Successfully Connected");
-
-            new Thread() {
-                public void run() {
-                    synchronized(client)
-                    {
-                        try {
-                            while(true)
-                            {
-                            data = new byte[in.available()];
-                            //sendMessage(out);
-                            readResponse(in);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            System.out.println(ex.getMessage());
-                        }
-                    }
-                }
-            }.start();
-        }
-        catch(Exception ex)
-        {
-            ex.getStackTrace();
-        }
-    }
-
+           os.write(comando.getBytes());
+           System.out.print(comando);
+           os.flush();
+           headers = new HashMap<String,String>();
+           int i=0;
+                    
+           for (String line; (line = is.readLine()) != null;) {
+               if (line.isEmpty()) break; // Stop when headers are completed. We're not interested in all the HTML.
+               System.out.println(line);
+               str.append(line);
+               if(i>0){
+                    int index =line.indexOf(":");
+                    headers.put(line.substring(0,index).trim(), line.substring(index+1).trim());                	 
+               }
+               i++;
+           }      
+       } catch (UnknownHostException e) {
+                System.err.println("Trying to connect to unknown host: " + e);
+       } catch (IOException e) {
+                System.err.println("IOException:  " + e);
+       } catch (Exception e) {
+                System.err.println("Exception:  " + e);
+       }	
+       
+       return str.toString();
+    } 
 }

@@ -4,6 +4,8 @@
  */
 package core.domain;
 
+import java.util.List;
+
 /**
  *
  * @author rcastro
@@ -15,7 +17,7 @@ public class PortInfo {
     private String servicio;
     private String aplicacion;  
     private String version;
-    private String respuesta;
+    private List<Comando> listaComando;
 
     /**
      * @return the protocolo
@@ -87,18 +89,20 @@ public class PortInfo {
         this.version = version;
     }
 
+    
+
     /**
-     * @return the respuesta
+     * @return the listaComando
      */
-    public String getRespuesta() {
-        return respuesta;
+    public List<Comando> getListaComando() {
+        return listaComando;
     }
 
     /**
-     * @param respuesta the respuesta to set
+     * @param listaComando the listaComando to set
      */
-    public void setRespuesta(String respuesta) {
-        this.respuesta = respuesta;
+    public void setListaComando(List<Comando> listaComando) {
+        this.listaComando = listaComando;
     }
     
 }
