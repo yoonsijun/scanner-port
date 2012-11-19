@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" import="java.util.*"
+import="uni.scd.core.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +15,9 @@
         <script type="text/javascript">                        
             function validarFormulario()
             {                 
-                    
+               
+               
+               
                return true;
             }
             
@@ -22,9 +26,12 @@
     <body>
         <h1>Escanear puertos</h1>
         
-        Modo de escaneo: 
+        Modo de escaneo:
         
-        <form name="frmBloque" id="frmEscaneo" method="post" action="escanearPuerto?accion=escanear" onsubmit="return validarFormulario();" >  
+         <%
+              Integer indEditar = (request.getAttribute("indMostrar")!=null)?Integer.parseInt(request.getAttribute("indMostrar").toString()):0;
+         %>
+        <form name="frmBloque" id="frmEscaneo" method="post" action="escanearPuerto" onsubmit="return validarFormulario();" >  
             <table>
                 <tr>
                     <td>IP/Dominio:</td>
@@ -33,9 +40,9 @@
                 </tr>
                 <tr>
                     <td><input type="radio" name="rbModo" value="1"></td>
-                    <td>Puerto espec�fico:</td>                
+                    <td>Puerto específico:</td>                
                     <td>
-                        <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="">
+                        <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="<%= (indEditar == 1)? request.getAttribute("indMostrar"):""%>">
                     </td>
                 </tr>            
                 <tr>
@@ -47,9 +54,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="radio" name="rbModo" value="3"></td>
+                    <td><input type="radio" name="rbModo" value="3" checked="ckecked"></td>
                     <td>Todos</td>
                     <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        Escanear puerto:
+                        <input type="checkbox" name="cbPuerto" checked="checked"  />
+                        Determinar servicios:
+                        <input type="checkbox" name="cbServicio" />
+                        <input type="hidden" name="hfPuerto" id="hfPuerto" />
+                        <input type="hidden" name="hfServicio" id="hfServicio" />
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3">
@@ -58,19 +75,33 @@
                 </tr>
             </table>
         </form>
-        <div style="display:${param.accion eq 'inicio'?'none':'block'}">
-            <table cellspacing="0" cellpadding="0" border="0" class="tabla">
+        <div style="display: <%= (indEditar == 1)? "block":"none"%>">
+            <table cellspacing="0" cellpadding="0" border="0" class="tabla" style="width:100%">
                 <tr>
                      <th><b>Puerto</b></th>
                      <th><b>Protocolo</b></th>
                      <th><b>Servicio</b></th>
-                     <th><b>Aplicaci�n</b></th>
-                     <th><b>Versi�n</b></th>                                      
+                     <th><b>Aplicación</b></th>
+                     <th><b>Versión</b></th>                                      
                      <th><b>Respuesta</b></th>  
                 </tr>
+                     <% List<PortInfo> list = (List<PortInfo>)request.getAttribute("beans"); %> 
+                     <% for(int i = 0; i < list.size(); i++ )
+                        {
+                            PortInfo entity = (PortInfo)list.get(i);
+                     %>   
+                            <tr class="<%= (i%2==0)?"normal":"alter" %>">
+                                <td><%= entity.getPuerto() %></td>
+                                <td><%= entity.getProtocolo() %></td>
+                                <td><%= entity.getServicio() %></td>
+                                <td><%= entity.getAplicacion() %></td>
+                                <td><%= entity.getVersion() %></td>
+                                <td><%= entity.getRespuesta() %></td>
+                            </tr>
+                     <% }%>       
 
             </table>
         </div>           
-${beans}
+                    
     </body>
 </html>
