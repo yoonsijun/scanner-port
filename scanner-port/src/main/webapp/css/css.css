@@ -536,3 +536,56 @@ body
 	top:10px;
 }
 
+
+
+.tabla
+{
+    
+}
+
+.thnormal
+{
+    background-color: #E5E5E5;
+    height: 30px;
+    line-height: 30px;
+    color: #798790;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;    
+    text-align: center;
+    border-bottom: 1px solid #D8D8D9;
+}
+
+.thverde
+{
+    background-color: #7BC144; 
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;    
+    text-align: center;
+    border-bottom: 1px solid #D8D8D9;
+}
+
+.tdnormal
+{
+    background: #FBFBFB;
+    border-bottom: 1px solid #E9E9E9;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color:#344450;    
+}
+
+.tdverde
+{
+    background: #DFF3C9;
+    border-bottom: 1px solid #D4E7BF;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color:#344450;    
+}
+
