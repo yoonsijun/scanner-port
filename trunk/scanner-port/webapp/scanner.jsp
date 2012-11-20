@@ -14,22 +14,18 @@ import="core.domain.*"%>
         <title>JSP Page</title>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/popup.js"></script>
-       <link rel="Stylesheet" media="all" type="text/css" href="css/css.css" />
+        <link rel="Stylesheet" media="all" type="text/css" href="css/css.css" />
        
         <script type="text/javascript">                        
             function validarFormulario()
-            {                 
-               
-               
-               
+            {                                
                return true;
             }
             
             function mostrarResultado(id) {                              
                 $('#resultado').html($('#' + id).html());
                 $("#div-popup").bPopup({ opacity: 0.4 });    
-            }
-            
+            }            
         </script>
     </head>
     <body>
@@ -40,72 +36,29 @@ import="core.domain.*"%>
          <%
               Integer indEditar = (request.getAttribute("indMostrar")!=null)?Integer.parseInt(request.getAttribute("indMostrar").toString()):0;
          %>
-        <form name="frmBloque" id="frmEscaneo" method="post" action="escanearPuerto" onsubmit="return validarFormulario();" >  
-            <table>
-                <tr>
-                    <td>IP/Dominio:</td>
-                    <td colspan="2"><input type="text" id="txtHost" name="txtHost"></td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="radio" name="rbModo" value="1"></td>
-                    <td>Puerto específico:</td>                
-                    <td>
-                        <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" value="<%= (indEditar == 1)? request.getAttribute("indMostrar"):""%>">
-                    </td>
-                </tr>            
-                <tr>
-                    <td><input type="radio" name="rbModo" value="2"></td>
-                    <td>Rango de puertos:</td>
-                    <td>
-                        <input type="text" id="txtPuertoDesde" name="txtPuertoDesde">
-                        <input type="text" id="txtPuertoHasta" name="txtPuertoHasta">
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="radio" name="rbModo" value="3" checked="ckecked"></td>
-                    <td>Todos</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        Escanear puerto:
-                        <input type="checkbox" name="cbPuerto" checked="checked"  />
-                        Determinar servicios:
-                        <input type="checkbox" name="cbServicio" />
-                        <input type="hidden" name="hfPuerto" id="hfPuerto" />
-                        <input type="hidden" name="hfServicio" id="hfServicio" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <input type="submit" value="Escanear" name="btnEscanear" />
-                    </td>
-                </tr>
-            </table>
-        </form>
+
         <div style="display: <%= (indEditar == 1)? "block":"none"%>">
             <table cellspacing="0" cellpadding="0" border="0" class="tabla" style="width:100%">
                 <tr>
-                     <th><b>Puerto</b></th>
-                     <th><b>Protocolo</b></th>
-                     <th><b>Servicio</b></th>
-                     <th><b>Aplicación</b></th>
-                     <th><b>Versión</b></th>                                      
-                     <th><b>Respuesta</b></th>  
+                     <th class="thnormal">Puerto</th>
+                     <th class="thverde">Protocolo</th>
+                     <th class="thnormal">Servicio</th>
+                     <th class="thnormal">Aplicación</th>
+                     <th class="thnormal">Versión</th>                                      
+                     <th class="thverde">Respuesta</th>  
                 </tr>
                      <% List<PortInfo> list = (List<PortInfo>)request.getAttribute("beans"); %> 
                      <% for(int i = 0; i < list.size(); i++ )
                         {
                             PortInfo entity = (PortInfo)list.get(i);
                      %>   
-                            <tr class="<%= (i%2==0)?"normal":"alter" %>">
-                                <td><%= entity.getPuerto() %></td>
-                                <td><%= entity.getProtocolo() %></td>
-                                <td><%= entity.getServicio() %></td>
-                                <td><%= entity.getAplicacion() %></td>
-                                <td><%= entity.getVersion() %></td>
-                                <td>
+                            <tr>
+                                <td class="tdnormal"><%= entity.getPuerto() %></td>
+                                <td class="tdverde"><%= entity.getProtocolo() %></td>
+                                <td class="tdnormal"><%= entity.getServicio() %></td>
+                                <td class="tdnormal"><%= entity.getAplicacion() %></td>
+                                <td class="tdnormal"><%= entity.getVersion() %></td>
+                                <td class="tdverde">
                                     <a href="JavaScript:mostrarResultado('idProtocolo<%= entity.getProtocolo() %>');">Mostrar</a>
                                     <div id="idProtocolo<%= entity.getProtocolo() %>" style="display:none;">
                                         <table id="tblComando">
