@@ -18,15 +18,16 @@ public class ConnectionManager {
     private static Connection activeConnection = null;
 
     public static Connection getConnection() {
-        if (activeConnection ==null) {
-            try {
+        if (activeConnection == null) {
+            try 
+            {
                 Class.forName("org.hsqldb.jdbcDriver");
                 activeConnection = DriverManager.getConnection("jdbc:hsqldb:file:D:/scanner-port/db/scannerport-db","sa", "");
             } catch (Exception ex) {
+
                 Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
-            }
-        
+            }    
         
         }
         return activeConnection;
