@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServlet;
  */
 public class EscanearPuertoServlet extends HttpServlet {
 
-    String page="/scanner.jsp";
+    String page="/index.jsp";
     String INIT = "inicio";
     String ESCANEAR = "escanear";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
