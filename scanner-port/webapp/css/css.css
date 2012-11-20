@@ -1,0 +1,538 @@
+﻿/*************ESTILOS DE MAQUETACION***********/
+
+/**********************************************
+Creado por		: Raúl Castro Castillo
+Empresa	  		: Inca Rail SAC
+Fecha Creación	: 12/05/2011
+***********************************************/
+
+
+body,  ul, li, h1, h2, h3, h4, h5, h6, img, a 
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 0;
+	text-decoration: none;	
+	overflow:auto;
+}
+
+
+body
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:lighter;	
+	border:0;
+	width:100%;
+	height: 100%;		
+	background-color:#fff;	
+	background-repeat:repeat;
+	color:#948A54;		
+	font-size:13px;
+}
+
+
+.content
+{
+	width:1000px;
+	clear:both;
+	margin:auto;	
+}
+
+.top-content
+{	
+	height:99px;
+	margin:auto;
+	background-color:#fff;	
+}
+
+
+.content-booking
+{
+	top:99px;		
+	margin-left:780px;
+	background-color:#919B79;
+	position:absolute;
+	filter:alpha(opacity=60);
+	opacity:0.6;
+	width:200px;
+	height:420px;
+	z-index:1000;
+}
+
+
+.main-booking
+{
+	background-image:url(../../Images/booking-content.png);
+	background-repeat:no-repeat;
+	width:200px;
+	margin-left:780px;
+	height:394px;
+	z-index:2000;
+	position:absolute;
+	top:113px;
+}
+
+
+
+.top-logo
+{
+	width:360px;
+	margin-top:10px;
+	height:80px;
+	float:left;
+	margin-left:0px;
+}
+
+.top-option
+{
+	width:620px;
+	height:94px;
+	float:right;
+}
+
+.middle-content
+{	
+	height:100%;
+	clear:both;
+	margin:auto;
+	height:420px;
+}
+
+.bottom-content
+{
+	height:25px;	
+	margin:auto;
+	width:100%;	
+	font-size:11px;
+	border-top:1px solid #CE5B3B;
+	
+}
+
+.bottom-content ul
+{
+	text-align:center;
+	width:80%;
+	margin:auto;
+}
+	
+.bottom-content ul li
+{
+	display:inline;
+	margin:0 8px;
+	line-height:25px;	
+}
+
+
+.content-title
+{
+	top:160px;		
+	background-color:#919B79;
+	position:absolute;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+	width:600px;
+	height:50px;
+	z-index:1000;
+}
+
+.content-imghover
+{
+	top:220px;	
+	position:absolute;	
+	width:414px;
+	height:131px;
+	z-index:1000;
+	margin-left:20px;
+}
+
+.title-page
+{
+	top:160px;
+	font-size:28px;
+	color:#fff;
+	margin-left:20px;
+	line-height:50px;
+	height:50px;
+	position:absolute;
+	width:300px;
+	z-index:2000;
+}
+
+
+.title-marca
+{
+	top:120px;
+	left:750px;
+	font-size:28px;
+	color:#fff;
+	margin-left:20px;
+	line-height:50px;
+	height:50px;
+	position:absolute;
+	width:300px;
+	z-index:2000;
+}
+
+
+
+/*****ESTILOS DEL CONTENEDOR PRINCIPAL DEL CONTENIDO********/
+
+.main-content
+{
+	background-color:#fff;
+	background-image:url(../../Images/fnd-main.png);
+	background-repeat:repeat-y;
+	clear:both;
+	height:100%;
+	border-top:30px solid #AF1B1B;	
+	width:1000px;
+}
+
+
+.main-content1
+{
+	background-color:#fff;	
+	clear:both;
+	height:100%;
+	border-top:30px solid #AF1B1B;	
+}
+
+.main-resum
+{
+	padding:35px 0px 35px 20px;
+	width:auto;
+	height:100%;
+}
+
+.main-cuadro
+{
+	padding:30px 0px 30px 20px;
+	width:auto;
+	height:100%;	
+}
+
+.main-resum-photo
+{
+	width:210px;
+	height:110px;
+	margin-bottom:12px;
+}
+
+.main-resum-content
+{
+	width:210px;
+	float:left;
+	margin-right:37px;
+}
+
+.content-promocion
+{
+	width:210px;
+	float:left;	
+}
+
+.main-txt
+{
+	line-height:17px;
+}
+
+.main-titulo
+{
+	color:#E64215;
+	line-height:17px;
+	margin-bottom:5px;
+	font-size:14px;
+	
+}
+
+.main-link
+{
+	text-align:center;
+	width:90px;
+	float:right;	
+	margin-top:10px;
+	border:1px solid #CFD69A;
+	background-color:#fff;
+	height:14px;
+	padding:3px;
+	display:none;
+	line-height:14px
+}
+
+.main-link a
+{
+	color:#CE5A3A;
+	font-weight:normal	
+}
+
+.main-link a:hover
+{
+	text-decoration:underline;
+}
+
+/*********BARRA DE OPCIONES*******/
+
+.top-len
+{
+	height:21px;
+	width:auto;
+	margin-right:0px;
+	margin-top:8px;
+}
+
+.btn-len
+{	
+	float:right;
+	text-indent:10px;
+	line-height:20px;
+	cursor:pointer;
+	font-size:12px;
+}
+
+.btn-len a
+{
+	color:#948A54
+}
+
+.btn-len a:hover
+{
+	color:#CE5A3A;
+	text-decoration:underline;
+}
+
+.top-acceso
+{
+	margin-right:20px;
+	width:auto;
+	height:20px;
+}
+
+.top-menu
+{
+	margin-top:40px;
+	margin-right:0px;
+	width:auto;
+	height:25px;
+	max-height:25px;
+	text-align:right;	
+}
+
+.top-menu-item
+{			
+	height:25px;	
+	float:right;
+	font-size:13px;
+	cursor:pointer;
+	padding:0 10px;
+	font-weight:500;	
+}
+
+.top-menu-item a
+{
+	color:#838938;		
+}
+
+.top-menu-item a:hover
+{
+	color:#CE5A3A;	
+}
+
+.top-menu-item:hover, .top-menu-item-active
+{		
+	height:25px;	
+	float:right;
+	font-size:13px;
+	color:#CE5A3A;
+	padding:0 10px;		
+	cursor:pointer;
+	font-weight:500;	
+}
+
+.top-menu-item-active a
+{
+	color:#CE5A3A;
+}
+
+
+/*********FIN BARRA DE OPCIONES*****/
+
+#foto 
+{
+	filter: alpha(opacity=100)
+}
+
+#contentfotohome
+{
+	background-image:url(../../fotos/home-alter-fnd.jpg);
+	background-repeat:no-repeat;
+	height:420px;
+}
+
+/*************CONTENDIDO DEL CONTENIDO INTERIOR***********/
+
+.main-interior
+{
+	width:750px;
+	float:left;
+	height:100%;
+	clear:both;
+	
+}
+
+
+
+.title-interior
+{
+	color:#CE5A3A;
+	font-size:24px;
+	margin-bottom:20px;
+}
+
+.txt-interior
+{
+	line-height:20px;
+}
+
+.txt-interior a
+{
+	color:#CE5A3A;
+	font-weight:bold;
+}
+
+.txt-interior a:hover
+{
+	text-decoration:underline;	
+}
+
+.txt-interior h1
+{
+	font-size:14px;
+	font-weight:bold;	
+	line-height:25px;
+	height:25px;
+	background-image:url(../../images/fnd-bullet.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	text-indent:20px;
+	margin-bottom:10px;
+}
+
+.txt-interior span
+{
+	font-weight:bold;
+}
+
+.txt-interior1
+{
+	line-height:20px;
+}
+
+
+/***************ESTILOS PARA EL FORMULARIO**************/
+
+.form-content
+{
+	margin:40px 0 0 40px;
+}
+
+.form-item
+{
+	height:40px;
+	max-height:40px;	
+}
+
+.form-label
+{
+	font-size:20px;
+	height:40px;
+	float:left;
+	width:250px;
+	text-align:right;
+	margin-right:30px;
+	vertical-align:middle;
+}
+
+.form-label span
+{
+	color:#CE5A3A;
+	font-size:11px;
+	font-weight:bold;
+	margin-right:20px;
+	vertical-align:middle;
+}
+
+.form-control
+{
+	float:left;
+	height:40px;
+	width:300px;
+	vertical-align:middle;
+}
+
+.form-submit
+{
+	margin-top:30px;
+	margin-bottom:30px;
+	height:20px;
+	width:513px;
+}
+
+.form-boton
+{
+	width:130px;
+	height:20px;
+	color:#CE5A3A;
+	border:1px solid #CFD69A;
+	text-align:center;
+	line-height:20px;
+	float:right;
+	font-weight:bold;
+}
+
+
+
+
+
+/**Fin de eetilos de pantalla de promociones y similares**/
+
+#div-popup 
+{
+	display:none;
+	width:50%;
+	height:60%;
+	background-color:#fff;
+	z-index:10000;
+}
+
+
+#div-popup1
+{
+	display:none;
+	width:80%;
+	height:80%;
+	background-color:#fff;
+	z-index:10000;
+}
+
+ iframe 
+ {
+ 	position:absolute;
+ 	top:20px; 	
+ 	left:20px;
+ 	width:95%;
+ 	height:95%;
+ 	overflow:auto;
+ 	border:none;
+ }
+
+.bClose 
+{
+	cursor:pointer;
+	font-weight:bold;
+	position:absolute;
+	right:15px;
+	text-decoration:none;
+	top:10px;
+}
+
