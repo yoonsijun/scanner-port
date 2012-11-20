@@ -4,10 +4,8 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-import servlets.DemoServlet;
 import servlets.EscanearPuertoServlet;
-import servlets.HelloServlet;
+
 
 class RunServer {
     
@@ -22,13 +20,7 @@ class RunServer {
 
         final ServletHolder jsp = context.addServlet(JspServlet.class, "*.jsp");
         jsp.setInitParameter("classpath", context.getClassPath());
-        
-        // add your own additional servlets like this:
-        // context.addServlet(JSONServlet.class, "/json");
-        context.addServlet(new ServletHolder(new HelloServlet()),"/hello");
-        
-        context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
-        context.addServlet(new ServletHolder(new DemoServlet()),"/demoServlet");
+             
         context.addServlet(new ServletHolder(new EscanearPuertoServlet()),"/escanearPuerto");
         
         final Server server = new Server(8080);
