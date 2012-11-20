@@ -96,7 +96,31 @@ import="core.domain.*"%>
                                 <td><%= entity.getServicio() %></td>
                                 <td><%= entity.getAplicacion() %></td>
                                 <td><%= entity.getVersion() %></td>
-                                <td></td>
+                                <td>
+                                    <table id="tblComando">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Protocolo</th>
+                                            <th>Comando</th>
+                                            <th>Resultado</th>
+                                        </tr>
+                                        <% 
+                                            List<Comando> listComando = entity.getListaComando();
+                                            for(int j = 0; j < listComando.size(); j++ ){
+                                                Comando cmd = (Comando)listComando.get(j);
+                                        %>
+                                            <tr>
+                                                <td><%= cmd.getId() %></td>
+                                                <td><%= cmd.getProtocolo() %></td>
+                                                <td><%= cmd.getCommand() %></td>
+                                                <td><%= cmd.getRespuesta() %></td>
+                                            </tr>
+                                        <%
+                                            }
+                                        %>
+                                    </table>
+                                    
+                                </td>
                             </tr>
                      <% }%>       
 
