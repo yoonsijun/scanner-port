@@ -12,6 +12,10 @@ import="core.domain.*"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+       <link rel="Stylesheet" media="all" type="text/css" href="css/css.css" />
+       
         <script type="text/javascript">                        
             function validarFormulario()
             {                 
@@ -19,6 +23,11 @@ import="core.domain.*"%>
                
                
                return true;
+            }
+            
+            function mostrarResultado(id) {                              
+                $('#resultado').html($('#' + id).html());
+                $("#div-popup").bPopup({ opacity: 0.4 });    
             }
             
         </script>
@@ -97,35 +106,45 @@ import="core.domain.*"%>
                                 <td><%= entity.getAplicacion() %></td>
                                 <td><%= entity.getVersion() %></td>
                                 <td>
-                                    <table id="tblComando">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Protocolo</th>
-                                            <th>Comando</th>
-                                            <th>Resultado</th>
-                                        </tr>
-                                        <% 
-                                            List<Comando> listComando = entity.getListaComando();
-                                            for(int j = 0; j < listComando.size(); j++ ){
-                                                Comando cmd = (Comando)listComando.get(j);
-                                        %>
+                                    <a href="JavaScript:mostrarResultado('idProtocolo<%= entity.getProtocolo() %>');">Mostrar</a>
+                                    <div id="idProtocolo<%= entity.getProtocolo() %>" style="display:none;">
+                                        <table id="tblComando">
                                             <tr>
-                                                <td><%= cmd.getId() %></td>
-                                                <td><%= cmd.getProtocolo() %></td>
-                                                <td><%= cmd.getCommand() %></td>
-                                                <td><%= cmd.getRespuesta() %></td>
+                                                <th>ID</th>
+                                                <th>Protocolo</th>
+                                                <th>Comando</th>
+                                                <th>Resultado</th>
                                             </tr>
-                                        <%
-                                            }
-                                        %>
-                                    </table>
-                                    
+                                            <% 
+                                                List<Comando> listComando = entity.getListaComando();
+                                                for(int j = 0; j < listComando.size(); j++ ){
+                                                    Comando cmd = (Comando)listComando.get(j);
+                                            %>
+                                                <tr>
+                                                    <td><%= cmd.getId() %></td>
+                                                    <td><%= cmd.getProtocolo() %></td>
+                                                    <td><%= cmd.getCommand() %></td>
+                                                    <td><%= cmd.getRespuesta() %></td>
+                                                </tr>
+                                            <%
+                                                }
+                                            %>
+                                        </table>
+                                    </div>
                                 </td>
                             </tr>
                      <% }%>       
 
             </table>
-        </div>           
+        </div>     
+                     
+        <div id="div-popup">
+             <a class="bClose">X</a>
+             <div id="resultado" class="resultado">
+                
+             </div> 
+        </div>             
+                     
                     
     </body>
 </html>
