@@ -22,7 +22,8 @@ public class ConnectionManager {
             try 
             {
                 Class.forName("org.hsqldb.jdbcDriver");
-                activeConnection = DriverManager.getConnection("jdbc:hsqldb:file:D:/scanner-port/db/scannerport-db","sa", "");
+//                activeConnection = DriverManager.getConnection("jdbc:hsqldb:file:D:/jose/uni/cursos/scd/trabajo/scanner-port/db/scannerport-db","sa", "");
+                activeConnection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/scannerport","sa", "");
             } catch (Exception ex) {
 
                 Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);

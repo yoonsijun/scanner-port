@@ -5,6 +5,7 @@
 package core.dao;
 
 import core.domain.Comando;
+import core.domain.PatronRespuesta;
 import java.util.List;
 
 /**
@@ -12,6 +13,9 @@ import java.util.List;
  * @author Jose
  */
 public interface IRequestDao {
-    public List<String> getComandosPorProtocolo(String protocolo);
+    public List<Comando> getComandosPorProtocolo(String protocolo);
     public List<Comando> getAllCommandos();
+    public List<PatronRespuesta> getAllPatrones();
+
+    public List<PatronRespuesta> getPatronesPorComando(Comando comando);
 }

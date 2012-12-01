@@ -13,7 +13,26 @@ public class Comando {
     private int id;
     private String protocolo;
     private String command;
+    private String patronRespuestaComando;
+    private int indMensajeBienvenida;
     private String respuesta;
+    private PatronRespuesta patronRespuesta;
+
+    public int getIndMensajeBienvenida() {
+        return indMensajeBienvenida;
+    }
+
+    public void setIndMensajeBienvenida(int indMensajeBienvenida) {
+        this.indMensajeBienvenida = indMensajeBienvenida;
+    }
+
+    public String getPatronRespuestaComando() {
+        return patronRespuestaComando;
+    }
+
+    public void setPatronRespuestaComando(String patronRespuestaComando) {
+        this.patronRespuestaComando = patronRespuestaComando;
+    }
 
     /**
      * @return the id
@@ -69,6 +88,14 @@ public class Comando {
      */
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    public PatronRespuesta getPatronRespuesta() {
+        return patronRespuesta;
+    }
+
+    public void setPatronRespuesta(PatronRespuesta patronRespuesta) {
+        this.patronRespuesta = patronRespuesta;
     }
 
 

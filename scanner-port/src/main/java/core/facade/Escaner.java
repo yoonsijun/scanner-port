@@ -80,7 +80,7 @@ public class Escaner {
           @Override public Puerto call() {
             try {
               Socket socket = new Socket();
-              socket.connect(new InetSocketAddress(ip, port), timeout);
+              socket.connect(new InetSocketAddress(ip, port));
               socket.close();
               return new Puerto(port, true);
             } catch (Exception ex) {

@@ -50,12 +50,16 @@ public class EscanearPuertoServlet extends HttpServlet {
             Boolean indServicio = true;
             
             String ip = Utilidades.obtenerIpServer(host);
+            System.out.println("ip:"+ip);
             
             Escaner  escaner = new Escaner();
             
             
             List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta);
-            
+            System.out.println("nro puertos:"+list.size());
+//            for(PortInfo obj : list){
+//                System.out.println(obj.toString());
+//            }
             Servicio servicio = new Servicio();
                         
             list = servicio.obtenerServicios(ip, list);
