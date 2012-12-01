@@ -4,6 +4,7 @@
  */
 package core.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +18,32 @@ public class PortInfo {
     private String servicio;
     private String aplicacion;  
     private String version;
+    private Comando comando;
     private List<Comando> listaComando;
 
+    public PortInfo() {
+        this.listaComando = new ArrayList<Comando>();
+    }
+    
+    
+    @Override
+    public String toString(){
+        return new StringBuffer("").append("\nprotocolo:").append(protocolo)
+                .append("\npuerto:").append(puerto)
+                .append("\nservicio:").append(servicio)
+                .append("\naplicacion:").append(aplicacion)
+                .append("\nversion:").append(version).toString();
+    }
+
+    public Comando getComando() {
+        return comando;
+    }
+
+    public void setComando(Comando comando) {
+        this.comando = comando;
+    }
+    
+    
     /**
      * @return the protocolo
      */
