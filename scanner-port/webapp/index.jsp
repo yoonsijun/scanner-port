@@ -43,65 +43,81 @@
         </script>
     </head>
     <body>
-        <h1>Servicios</h1>
+        <div class="content">
+            <div class="header"></div>
+            <div class="center">
         
-        <div id="spinner"></div>
-        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        
+        
+        
+        <table cellspacing="0" cellpadding="0" border="0" class="tbmain">
             <tr>
-                <td style="width: 30%">
-                    
+                <td  class="tbmain-left" valign="top">
+                  <div class="titulo-form">Servicios</div>
                   <form name="frmBloque" id="frmEscaneo">  
                     <table>
                         <tr>
-                            <td>IP/Dominio:</td>
-                            <td colspan="2"><input type="text" id="txtHost" name="txtHost"></td>
-
+                            <td colspan="2">
+                                IP/Dominio:
+                                <input type="text" id="txtHost" name="txtHost" class="input-caja"style=" width: 150px">
+                            </td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="rbModo" value="1"></td>
-                            <td>Puerto específico:</td>                
                             <td>
-                                <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" >
-                            </td>
+                                Puerto específico:
+                                 <input type="text" id="txtPuertoEspecifico" name="txtPuertoEspecifico" class="input-caja">
+                            </td>                                            
                         </tr>            
                         <tr>
-                            <td><input type="radio" name="rbModo" value="2"></td>
-                            <td>Rango de puertos:</td>
+                            <td><input type="radio" name="rbModo" value="2"></td>                            
                             <td>
-                                <input type="text" id="txtPuertoDesde" name="txtPuertoDesde">
-                                
-                                <input type="text" id="txtPuertoHasta" name="txtPuertoHasta">
+                                Rango de puertos:
+                                Desde:
+                                <input type="text" id="txtPuertoDesde" name="txtPuertoDesde" class="input-caja">
+                                Hasta:
+                                <input type="text" id="txtPuertoHasta" name="txtPuertoHasta" class="input-caja">
                             </td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="rbModo" id="rbModo" value="3" checked="ckecked"></td>
-                            <td>Todos</td>
-                            <td></td>
+                            <td>Todos</td>                            
                         </tr>
                         <tr>
-                            <td colspan="3">                                
+                            <td colspan="2">                                
                                 Determinar servicios:
                                 <input type="checkbox" name="cbServicio" id="cbServicio" />                                
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3">
-                                 <a href="JavaScript:enviarForm();">EscanearPuerto</a>
+                            <td colspan="2" style="text-align: center; padding-top: 20px">
+                                <a href="JavaScript:enviarForm();"><img src="images/boton.png" alt="Escanear puertos"></a>
                             </td>
                         </tr>
                     </table>
                 </form>
                     
                 </td>
-                <td style="width: 30%">
-                    <div id="content" style="width: 100%; height: 400px;">                        
-                    </div>
-                    
+                <td class="tbmain-center" valign="top">
+                    <div id="spinner"></div>
+                    <div id="content" style="width: 100%; height: 400px;">
+                        <div class="titulo-general">Escaneador de Puetos</div>
+                        <div class="texto-general">
+                            Programa que permite detectar los puertos abiertos de un host remoto,
+                            identificar el protocolo y el servicio que corren en dichos puertos.                            
+                        </div>
+                        <div class="img-general">
+                            <img src="images/fiis.png" />
+                        </div>
+                    </div>                    
                 </td>
             </tr>
             
         </table>
-      
+        <div style="clear: both"></div>
+            </div>
+            <div class="bottom"></div>
+        </div>
         
     </body>
 </html>
