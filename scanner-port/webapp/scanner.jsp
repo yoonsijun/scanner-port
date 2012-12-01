@@ -29,23 +29,26 @@ import="core.domain.*"%>
         </script>
     </head>
     <body>
-        <h1>Escanear puertos</h1>
+       <div class="titulo-general">Resultado</div>
+                        <div class="texto-general">
+                            Programa que permite detectar los puertos abiertos de un host remoto,
+                            identificar el protocolo y el servicio que corren en dichos puertos.                            
+                        </div>
         
-        Modo de escaneo:
         
          <%
               Integer indEditar = (request.getAttribute("indMostrar")!=null)?Integer.parseInt(request.getAttribute("indMostrar").toString()):0;
          %>
 
         <div style="display: <%= (indEditar == 1)? "block":"none"%>">
-            <table cellspacing="0" cellpadding="0" border="0" class="tabla" style="width:100%">
-                <tr>
+            <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+                <tr class="trheader">
                      <th class="thnormal">Puerto</th>
-                     <th class="thverde">Protocolo</th>
+                     <th class="thnormal">Protocolo</th>
                      <th class="thnormal">Servicio</th>
                      <th class="thnormal">Aplicación</th>
                      <th class="thnormal">Versión</th>                                      
-                     <th class="thverde">Respuesta</th>  
+                     <th class="thnormal">Respuesta</th>  
                 </tr>
                      <% List<PortInfo> list = (List<PortInfo>)request.getAttribute("beans"); %> 
                      <% for(int i = 0; i < list.size(); i++ )
@@ -61,23 +64,23 @@ import="core.domain.*"%>
                                 <td class="tdverde">
                                     <a href="JavaScript:mostrarResultado('idProtocolo<%= entity.getProtocolo() %>');">Mostrar</a>
                                     <div id="idProtocolo<%= entity.getProtocolo() %>" style="display:none;">
-                                        <table id="tblComando">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Protocolo</th>
-                                                <th>Comando</th>
-                                                <th>Resultado</th>
+                                        <table id="tblComando" cellspacing="0" cellpadding="0" border="0" class="tabla">
+                                            <tr class="trheader">
+                                                <th class="thnormal">ID</th>
+                                                <th class="thnormal">Protocolo</th>
+                                                <th class="thnormal">Comando</th>
+                                                <th class="thnormal">Resultado</th>
                                             </tr>
                                             <% 
                                                 List<Comando> listComando = entity.getListaComando();
                                                 for(int j = 0; j < listComando.size(); j++ ){
                                                     Comando cmd = (Comando)listComando.get(j);
                                             %>
-                                                <tr>
-                                                    <td><%= cmd.getId() %></td>
-                                                    <td><%= cmd.getProtocolo() %></td>
-                                                    <td><%= cmd.getCommand() %></td>
-                                                    <td><%= cmd.getRespuesta() %></td>
+                                                <tr class="trresultado">
+                                                    <td class="tdnormal"><%= cmd.getId() %></td>
+                                                    <td class="tdnormal"><%= cmd.getProtocolo() %></td>
+                                                    <td class="tdverde"><%= cmd.getCommand() %></td>
+                                                    <td class="tdnormal"><%= cmd.getRespuesta() %></td>
                                                 </tr>
                                             <%
                                                 }
@@ -93,7 +96,10 @@ import="core.domain.*"%>
                      
         <div id="div-popup">
              <a class="bClose">X</a>
+              <div class="titulo-general">Resultado</div>
              <div id="resultado" class="resultado">
+                 
+                
                 
              </div> 
         </div>             
