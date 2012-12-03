@@ -22,7 +22,7 @@ import core.domain.*;
  */
 public class Escaner {
     
-    public List<PortInfo> escanerPuertos(String ip, int modo, int puerto, int puertoInicial, int puertoFinal)
+    public List<PortInfo> escanerPuertos(String ip, int modo, int puerto, int puertoInicial, int puertoFinal, String ptos)
     {
         List<PortInfo> list = new ArrayList<PortInfo>();
         
@@ -30,18 +30,25 @@ public class Escaner {
         {               
             int portIni = 0;
             int portFin = 0;
+            Boolean flag = false;
+            String[] puertos = null;
             
             if(modo == 1)
             {
                 portIni = puerto;
                 portFin = puerto;
-            }           
+            }
             if(modo == 2)
+            {
+                puertos = ptos.split(",");
+                flag = true;
+            }
+            if(modo == 3)
             {
                 portIni = puertoInicial;
                 portFin = puertoFinal;
-            }
-            if(modo == 3)
+            }            
+            if(modo == 4)
             {
                 portIni = 1;
                 portFin = 10000;
@@ -53,10 +60,19 @@ public class Escaner {
             
             final List<Future<Puerto>> futures = new ArrayList<Future<Puerto>>();
             
-            for (int port = portIni; port <= portFin; port++) {
-              futures.add(verificarPuerto(es, ip, port, timeout));
+            if(!flag)
+            {            
+                for (int port = portIni; port <= portFin; port++) {
+                  futures.add(verificarPuerto(es, ip, port, timeout));
+                }
             }
-            
+            else
+            {
+                for(String port: puertos)
+                {
+                    futures.add(verificarPuerto(es, ip, Integer.parseInt(port), timeout));
+                }
+            }
             es.shutdown();
                             
             for (final Future<Puerto> f : futures) {

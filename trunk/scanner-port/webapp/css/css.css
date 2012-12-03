@@ -20,8 +20,7 @@ body,  ul, li, h1, h2, h3, h4, h5, h6, img, a
 
 body
 {
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight:lighter;	
+	font-family:Arial, Helvetica, sans-serif;		
 	border:0;
 	width:100%;
 	height: 100%;		
@@ -188,19 +187,38 @@ body
 
 .input-caja
 {
-	border:1px solid #C5DCEB;	
-	height:19px;
-	width:120px;
-	padding:0 5px;
-	line-height:19px;
-	color:#3764A0;
-	font-size:11px;	
+     border:1px solid #C5C5C5;	
+     height:19px;
+     width:150px;
+     padding:0 5px;
+     line-height:19px;
+     color:#484848;
+     font-size:12px;	
+     background-color: #E9E9E9;
 }
 
 .input-caja:focus
 {
-	background-color:#FFFFD5;	
+    background-color:#FFFFD5;	
 }
+
+.input-combo
+{
+    border:1px solid #C5C5C5;	
+    background-color: #E9E9E9;
+    height:19px;
+    width:162px;
+    padding:0 0px 0 5px;
+    line-height:19px;
+    color:#484848;
+    font-size:12px;	
+}
+
+.input-combo:focus
+{
+    background-color:#FFFFD5;    
+}
+
 
 .titulo-general
 {
@@ -232,5 +250,73 @@ body
 .resultado
 {
     margin-bottom: 30px;
+    
+}
+
+.titlabel
+{
+    font-weight: bold;
+    width: 100%;
+    font-size:12px;
+    
+}
+
+.formcontrol
+{
+    margin-bottom: 6px;  
+    height: 25px;    
+}
+
+.indexhref
+{
+    margin-left: 890px;
+    top: 118px;
+    width: 100px;
+    height: 20px;
+    position: absolute;
+}
+
+.indexhref a
+{
+   color:#000000;
+   text-transform: uppercase;
+   font-size: 11px;
+   font-weight: bold;
+}
+
+.indexhref a:hover
+{
+    text-decoration: underline;    
+}
+
+.txtbottom
+{
+    color:#ffffff;
+    font-size: 10px;
+    text-align: center;    
+}
+
+.loader
+{
+    background-color: #DADADA;
+    border:4px solid #9A9A9A;
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    position: absolute;
+    z-index: 30000;
+    left: 500px;
+    top:200px 
+}
+
+.loader img
+{
+    
+}
+
+.loader span
+{
+    line-height: 40px;
+    font-size: 14px;
     
 }

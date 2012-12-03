@@ -96,7 +96,7 @@ import="core.domain.*"%>
                      
         <div id="div-popup">
              <a class="bClose">X</a>
-              <div class="titulo-general">Resultado</div>
+             <div class="titulo-general" style="margin-top:30px; margin-left: 20px;">Resultado</div>
              <div id="resultado" class="resultado">
                  
                 

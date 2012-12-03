@@ -30,18 +30,25 @@ public class EscanearPuertoServlet extends HttpServlet {
         try
         {
             String host = request.getParameter("host");  
-            System.out.println("llego" + host);
+            
+            System.out.println(request.getParameter("modo"));
             Integer modo = Integer.parseInt(request.getParameter("modo"));
-	    
+	               
+            
             Integer puerto = 0;
             Integer puertoDesde = 0;
             Integer puertoHasta = 0;
+            String puertos = "";
             
             if(modo == 1)
             {
                 puerto = Integer.parseInt(request.getParameter("pto"));
             }	    
             if(modo == 2)
+            {                
+                puertos = request.getParameter("ptos");
+            }            
+            if(modo == 3)
             {
                 puertoDesde = Integer.parseInt(request.getParameter("ptodesde"));
                 puertoHasta = Integer.parseInt(request.getParameter("ptohasta"));
@@ -54,26 +61,20 @@ public class EscanearPuertoServlet extends HttpServlet {
             
             Escaner  escaner = new Escaner();
             
-            
-            List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta);
+            List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta, puertos);
             System.out.println("nro puertos:"+list.size());
-//            for(PortInfo obj : list){
-//                System.out.println(obj.toString());
-//            }
+
             Servicio servicio = new Servicio();
                         
             list = servicio.obtenerServicios(ip, list);
-                        
-            
+                       
             request.setAttribute("beans",list);
             request.setAttribute("indMostrar", "1"); 
-          
-            
+                      
             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 	    if (dispatcher != null){
 		dispatcher.forward(request, response);
-            } 
-            
+            }             
         }
         catch(Exception ex)
         {
@@ -111,14 +112,14 @@ public class EscanearPuertoServlet extends HttpServlet {
             Escaner  escaner = new Escaner();
             
             
-            List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta);
+            //List<PortInfo> list = escaner.escanerPuertos(ip, modo, puerto, puertoDesde, puertoHasta);
             
             Servicio servicio = new Servicio();
                         
-            list = servicio.obtenerServicios(ip, list);
+            //list = servicio.obtenerServicios(ip, list);
                         
             
-            request.setAttribute("beans",list);
+            //request.setAttribute("beans",list);
             request.setAttribute("indMostrar", "1"); 
           
             
