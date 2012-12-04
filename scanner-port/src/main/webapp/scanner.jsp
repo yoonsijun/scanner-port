@@ -79,8 +79,8 @@ import="core.domain.*"%>
                                                 <tr class="trresultado">
                                                     <td class="tdnormal"><%= cmd.getId() %></td>
                                                     <td class="tdnormal"><%= cmd.getProtocolo() %></td>
-                                                    <td class="tdverde"><%= cmd.getCommand() %></td>
-                                                    <td class="tdnormal"><%= cmd.getRespuesta() %></td>
+                                                    <td class="tdverde" style="text-align: left;"><%= cmd.getCommand() %></td>
+                                                    <td class="tdnormal" style="text-align: left;"><%= cmd.getRespuesta() %></td>
                                                 </tr>
                                             <%
                                                 }

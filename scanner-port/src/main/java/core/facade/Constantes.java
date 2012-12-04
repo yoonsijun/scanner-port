@@ -11,4 +11,6 @@ package core.facade;
 public interface Constantes {
     public String HTTP = "http";
     public String FTP = "ftp";
+    public String SMTP = "smtp";
+    public String BR = "<BR>";
 }

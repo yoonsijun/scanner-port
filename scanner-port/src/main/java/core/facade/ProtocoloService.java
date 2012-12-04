@@ -142,7 +142,7 @@ public class ProtocoloService {
             //Se obtiene la primera línea para identificar a que protocolo pertenece
             while(!(linea = is.readLine()).isEmpty()){
                 System.out.println(linea);
-                str.append(linea);        
+                str.append(linea+Constantes.BR);        
             }
             comando.setRespuesta(str.toString());            
 
@@ -187,14 +187,14 @@ public class ProtocoloService {
                     //leyendo mensaje de bienvenda
                     linea = is.readLine();
                     System.out.println(linea);
-                    str.append(linea);                                    
+                    str.append(linea+Constantes.BR);
                     boolean esFinDeLinea = false;
                     do{
                         int ind =linea.indexOf("-");
                         if(ind==3){
                             linea = is.readLine();
                             System.out.println(linea);
-                            str.append(linea);                        
+                            str.append(linea+Constantes.BR);
                         }else{
                             esFinDeLinea = true;
                         }                    
@@ -215,7 +215,7 @@ public class ProtocoloService {
                         if(ind==3){
                             linea = is.readLine();
                             System.out.println(linea);
-                            str.append(linea);                        
+                            str.append(linea+Constantes.BR);          
                         }else{
                             esFinDeLinea = true;
                         }                    
