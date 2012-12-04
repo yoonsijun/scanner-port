@@ -196,7 +196,8 @@ public class Servicio {
                 if(Constantes.HTTP.equals(portInfo.getProtocolo())){
                     comando.setCommand(comando.getCommand().replace("%SERVER%", ip));
                     protocoloService.commandHttp(comando,socket,portInfo,patrones);
-                }else if(Constantes.FTP.equals(portInfo.getProtocolo())){            
+                    comando.setCommand(comando.getCommand().replace("\n", Constantes.BR));
+                }else if(Constantes.FTP.equals(portInfo.getProtocolo()) || Constantes.SMTP.equals(portInfo.getProtocolo())){            
                     protocoloService.commandFtp(comando,socket,portInfo,patrones);
                 }else{
                     

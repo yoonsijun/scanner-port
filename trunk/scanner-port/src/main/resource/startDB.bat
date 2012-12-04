@@ -1,0 +1,1 @@
+java -cp lib/hsqldb-2.2.9.jar org.hsqldb.Server -database.0 file:../db/scannerport-db -dbname.0 scannerport
